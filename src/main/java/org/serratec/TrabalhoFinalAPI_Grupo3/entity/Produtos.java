@@ -5,33 +5,33 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "produtos")
+@Table(name="produtos")
 public class Produtos {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name = "id_produto")
+	private Long Id;
 	
-	@NotBlank(message = "Nome do produto é obrigatório")
-	@Column(name = "nome", nullable = false)
+	@NotBlank
+	@Size(min=3, max=100, message="Nome deve ter entre: 3 e 100 Caracteres.")
+	@Column(name="nome", nullable=false, length=100)
 	private String nome;
 	
-	@ManyToOne
-	@JoinColumn(name = "categoria_id", nullable = false)
-	@NotNull(message = "Categoria é obrigatória")
-	private Categorias categoria;
 	
-	@NotNull(message = "Preço é obrigatório")
-	@Positive(message = "Preço deve ser maior que zero")
-	@Column(name = "preco", nullable = false)
+	@NotBlank
+	@Size(min=3, max=50, message="Categoria deve ter entre: 3 e 50 Caracteres.")
+	@Column(name="categoria", nullable=false, length=50)
+	private String categoria;
+	
+	@NotNull
+	@Column(name="preco", nullable=false)
 	private Double preco;
 	
 	@Column(name = "descricao")
@@ -100,3 +100,4 @@ public class Produtos {
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
 }
+
