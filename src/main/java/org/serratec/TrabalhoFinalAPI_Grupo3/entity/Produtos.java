@@ -33,24 +33,31 @@ public class Produtos {
 	@NotNull
 	@Column(name="preco", nullable=false)
 	private Double preco;
-
-	public Produtos(Long id, String nome, String categoria, Double preco) {
-		super();
-		Id = id;
-		this.nome = nome;
-		this.categoria = categoria;
-		this.preco = preco;
-	}
+	
+	@Column(name = "descricao")
+	private String descricao;
+	
+	@Column(name = "quantidade_estoque")
+	private Integer quantidadeEstoque;
 
 	public Produtos() {
 	}
 
+	public Produtos(Long id, String nome, Categorias categoria, Double preco, String descricao, Integer quantidadeEstoque) {
+		this.id = id;
+		this.nome = nome;
+		this.categoria = categoria;
+		this.preco = preco;
+		this.descricao = descricao;
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -61,11 +68,11 @@ public class Produtos {
 		this.nome = nome;
 	}
 
-	public String getCategoria() {
+	public Categorias getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categorias categoria) {
 		this.categoria = categoria;
 	}
 
@@ -76,8 +83,21 @@ public class Produtos {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	
-	
-	
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
+	}
+
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
 }
 
