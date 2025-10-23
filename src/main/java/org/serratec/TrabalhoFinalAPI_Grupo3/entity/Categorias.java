@@ -33,12 +33,26 @@ public class Categorias {
 	}
 
 	// Getters e Setters
+	private Long id;
+	
+	@NotBlank(message = "Nome da categoria é obrigatório")
+	@Column(name = "nome", nullable = false, unique = true)
+	private String nome;
+
+	public Categorias() {
+	}
+
+	public Categorias(Long id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
+
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -48,4 +62,5 @@ public class Categorias {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+}
 }
